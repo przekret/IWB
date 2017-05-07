@@ -10,15 +10,15 @@
                     {!! csrf_field() !!}
                     <div class="panel-body">
                         <div>
-                        <textarea style="overflow: auto;resize:none" rows="5" cols="41" >
+                        <textarea style="overflow: auto;resize:none" rows="5" cols="41" name="text">
                             What you want to do?!
                         </textarea>
                         </div>
                         <div>
-                            <input type="date" id="myDate" value="Date">
-                            <input type="time" id="myTime" value="Time">
+                            <input type="date" name="date" id="myDate" value="Date">
+                            <input type="time" name="time" id="myTime" value="Time">
                         </div>
-                        <button type="submit" class="btn btn-primary" value="create">
+                        <button type="submit" class="btn btn-primary" pull-right value="create">
                             Add Note
                         </button>
                     </div>
