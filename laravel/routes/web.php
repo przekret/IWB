@@ -15,10 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+Route::get('/', 'PageController@index');
 Route::get('users', ['uses' =>'loginController@index']);
-Route::get('login',['uses' =>'loginController@login']);
-Route::post('login',['uses' => 'loginController@store']);
+Route::get('list',['uses' =>'listController@login']);
+Route::post('list',['uses' => 'listController@store']);
+
+//home route
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home', ['uses' => 'HomeController@create']);
+
+//auth route
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

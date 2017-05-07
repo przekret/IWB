@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class loginController extends Controller
+class listController extends Controller
 {
     public function index()
     {
-    	return "leck mich am arsch";
+    	return "index not relevant";
     }
 
     public function login()
