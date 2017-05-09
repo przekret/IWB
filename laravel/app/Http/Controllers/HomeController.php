@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -14,6 +16,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+     
     }
 
     /**
@@ -23,13 +26,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $posts = PostController::get_posts();
+
+        return view('home', compact('posts'));
     }
 
-    
-    public function create()
+    //Static functions -------------------------------------------------------------------------------//
+    public static function refresh()
     {
-        //create new note 
-        return "dupa";
+        $posts = PostController::get_posts();
+        //return view('home', compact('posts'))->renderSections()['content'];
+        return redirect()->to('/home'); 
     }
+
+
+
 }
