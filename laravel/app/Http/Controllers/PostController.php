@@ -52,14 +52,13 @@ class PostController extends Controller
     	
     }
 
-    public function markDone(Request $req)
+    public static function markDone(Request $req)
     {
 
-    	$data = Post::find($req->done_id); 
+    	$data = Post::find($req->post_id); 
     	$data->status = "done";
     	$data->save();
 
-		return redirect()->to('/home'); 
     }
 
     public static function get_posts()

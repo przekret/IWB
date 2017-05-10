@@ -33,10 +33,27 @@ class HomeController extends Controller
     }
 
     //Static functions -------------------------------------------------------------------------------//
-    public static function refresh()
+ /**   public static function refresh()
     {
         $posts = PostController::get_posts();
-        //return view('home', compact('posts'))->renderSections()['content'];
+        return view('home', compact('posts'))->renderSections()['content'];
+        return redirect()->to('/home'); 
+    } */
+
+    public static function modifyPost(Request $data)
+    {
+        //the modify post
+        if ($data->delete == 'delete')
+        { //action delete post
+            //return $data->all();
+            Post::destroy($data->post_id);
+        }
+        elseif ($data->done == 'done') 
+        { //action done post
+            PostController::markDone($data);
+        }
+        //return $data->all();
+        //simply refresh
         return redirect()->to('/home'); 
     }
 

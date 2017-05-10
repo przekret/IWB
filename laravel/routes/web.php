@@ -21,7 +21,7 @@ Route::get('users', ['uses' =>'loginController@index']);
 //home route
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home', ['uses' => 'PostController@store']);
-Route::post('/done', ['uses' => 'PostController@markDone']);
+Route::post('/modify', ['uses' => 'HomeController@modifyPost']);
 
 //auth route
 Auth::routes();

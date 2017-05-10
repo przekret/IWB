@@ -61,29 +61,47 @@ What you want to do?!
                     </form>
                 
                 <ul class="list-group">
-                    
+                <!-- liste ------------------------------------------------------------------------------------------------------------------------------------------ -->  
                     @foreach($posts as $pst)
+                            @if ($pst->status == 'done')
+                                
+                                <li class="list-group-item disabled" style ='overflow:hidden;'>
+                                     <span>
+                                         
+                                            <h4 class="list-group-item-heading">{{ $pst->content}}</h4>
+                                            <p class="list-group-item-text">{{ $pst->valid}}</p>
 
-                             {!! csrf_field() !!}
-                            <li class="list-group-item style =''
-                             margin-top: 20px">
-                              <h4 class="list-group-item-heading">{{ $pst->content }}</h4>
-                              <p class="list-group-item-text">{{ $pst->valid}}</p>
-                             <!--    <span>
-                                 <input type="text" name="done_id" value="{{ $pst->id}}" style="display:none" align="right"> <br>
-                                 {{ $pst->status}}
-                                 {{ $pst->valid}}
-                                 {{ $pst->content }}
-                                 </span>
-                                 <span class="pull-right clearfix">
-                                 <form method="POST" action="/done">
-                                    <button class="btn btn-xs btn-primary" name='done'>Done</button>
-                                    <button class="btn btn-xs btn-primary" style='background-color: #f44336' name='delete'>delete</button>
-                                 </span>-->
-                            </li>
+                                         </span>
+                                         <span class="pull-right clearfix">
+                                         <form method="POST" action="/modify">
+                                             {!! csrf_field() !!}
+                                            <input type="text" name="post_id" value="{{ $pst->id }}" style="display:none" align="right"> <br>
+                                            <button class="btn btn-xs btn-primary" style='background-color: #818181' name='delete' value ='delete'>delete</button>
+                                         </form>
+                                     </span>
+                                </li>
+                            @else
+                                 <li class="list-group-item" style ='overflow:hidden;'>
+                                     <span>
+
+                                            <h4 class="list-group-item-heading">{{ $pst->content}}</h4>
+                                            <p class="list-group-item-text">{{ $pst->valid}}</p>
+
+                                         </span>
+                                         <span class="pull-right clearfix">
+                                         <form method="POST" action="/modify">
+                                            {!! csrf_field() !!}
+                                            <input type="text" name="post_id" value="{{ $pst->id}}" style="display:none" align="right"> <br>
+                                            <button class="btn btn-xs btn-primary" name='done' value='done'>Done</button>
+                                            <button class="btn btn-xs btn-primary" style='background-color: #818181' name='delete' value ='delete'>delete</button>
+                                        </form>
+                                     </span>
+                                </li>
+                            @endif
+
                         
                     @endforeach
-                    
+                <!-- endliste --------------------------------------------------------------------------------------------------------------------------------------- -->     
                 </ul>
             </div>
         </div>
